@@ -29,7 +29,8 @@ function Login(){
     }
 
     return (
-        <div>
+        <div className="login_window">
+            <button className="exit"></button>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
