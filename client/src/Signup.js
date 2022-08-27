@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-function Login(){
+function Signup(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([])
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        setErrors([])
-        fetch("/sessions", {
+    function handleSubmit(e){
+        e.preventDefault();
+        fetch("/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -16,16 +16,18 @@ function Login(){
             body: JSON.stringify({
                 username: username,
                 password: password,
-            })
+                password_confirmation: passwordConfirmation,
+            }),
         }).then((response) => {
             if (response.ok) {
-                response.json().then((response) => console.log(response))
+                response.json().then((response) => console.log(response));
             } else {
-                response.json().then((errors) => setErrors(errors.errors))
+                response.json().then((errors) => setErrors(errors.errors));
             }
         });
-        setUsername('')
-        setPassword('')
+        setUsername("")
+        setPassword("")
+        setPasswordConfirmation("")
     }
 
     return (
@@ -35,28 +37,33 @@ function Login(){
                 <input
                     type="text"
                     id="username"
-                    autoComplete="off"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
                 <label htmlFor="password">Password</label>
                 <input
-                    type="password"
+                    type="text"
                     id="password"
-                    autoComplete="off"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
+                <label htmlFor="password_confirmation">Confirm Password</label>
+                <input
+                    type="text"
+                    id="password_confirmation"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                ></input>
                 <button type="submit" id="proceed_button">Proceed</button>
-                {errors.length > 0 && (
-                    <div>
-                        <p>{errors}</p>
-                    </div>
-                )}
-                <p id="account">Account Requisition</p>
-            </form>
+                <p id="account">Return to Login</p>
+            </form>          
+            {errors.length > 0 && (
+                <div>
+                    <p>{errors}</p>
+                </div>
+            )}
         </div>
     )
 }
 
-export default Login;
+export default Signup;
