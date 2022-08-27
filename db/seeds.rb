@@ -1,9 +1,4 @@
-User.destroy_all
-User.reset_pk_sequence
-
 puts "seeding"
-    
-    User.create(username: "first", password: "abc", password_confirmation: "abc")
-    User.create(username: "second", password: "def", password_confirmation: "def")
+User.create(username: "Marena", password: "abc", password_confirmation: "abc", house_affiliation: "Stark", image: "image", bio: "A bio")
 
 puts "finished seeding!"
