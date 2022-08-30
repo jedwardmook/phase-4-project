@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Login(){
+function Login({setCurrentUser}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([])
+
+    const handleErrors = () => {
+        setErrors([])
+    }
+    
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -19,7 +25,8 @@ function Login(){
             })
         }).then((response) => {
             if (response.ok) {
-                response.json().then((response) => console.log(response))
+                response.json().then((user) => setCurrentUser(user))
+    
             } else {
                 response.json().then((errors) => setErrors(errors.errors))
             }
@@ -30,32 +37,37 @@ function Login(){
 
     return (
         <div className="login_window">
-            <button className="exit"></button>
+            <div className="form_div">
+                <Link to="/"><button className="exit">X</button></Link>
+                <h4 className="form_header">Log in</h4>
+                <hr/>
+                <h3 className="form_welcome">Welcome back to Heirbnb</h3>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
                 <input
                     type="text"
-                    id="username"
+                    className="form_input_top"
                     autoComplete="off"
+                    placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
-                <label htmlFor="password">Password</label>
                 <input
                     type="password"
-                    id="password"
+                    className="form_input_bottom"
                     autoComplete="off"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
-                <button type="submit" id="proceed_button">Proceed</button>
+                <p className="note">Don't have an account. Sign up <Link to="/signup">here</Link>.</p> 
+                <button type="submit" className="proceed_button">Proceed</button>
                 {errors.length > 0 && (
-                    <div>
-                        <p>{errors}</p>
+                    <div onClick={handleErrors} className="errors_div">
+                        <p classname="errors">{errors}</p>
                     </div>
                 )}
-                <p id="account">Account Requisition</p>
             </form>
+            </div>
         </div>
     )
 }

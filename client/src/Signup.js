@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import user_icon from './images/user_icon.jpg'
 
 function Signup(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([])
+
+    const handleErrors = () => {
+        setErrors([])
+    }
 
     function handleSubmit(e){
         e.preventDefault();
@@ -17,6 +23,11 @@ function Signup(){
                 username: username,
                 password: password,
                 password_confirmation: passwordConfirmation,
+                photo: {user_icon},
+                name: "",
+                bio: "",
+                location: "",
+                allegiance: "",
             }),
         }).then((response) => {
             if (response.ok) {
@@ -31,37 +42,43 @@ function Signup(){
     }
 
     return (
-        <div>
+        <div className="login_window">
+            <div className="form_div_signup">
+                <Link to="/"><button className="exit">X</button></Link>
+                <h4 className="form_header">Sign up</h4>
+                <hr/>
+                <h3 className="form_welcome">Welcome to Heirbnb</h3>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
                 <input
                     type="text"
-                    id="username"
+                    className="form_input_top"
+                    placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
-                <label htmlFor="password">Password</label>
                 <input
                     type="text"
-                    id="password"
+                    className="form_input_middle"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
-                <label htmlFor="password_confirmation">Confirm Password</label>
                 <input
-                    type="text"
-                    id="password_confirmation"
+                    type="password"
+                    className="form_input_bottom"
+                    placeholder="Confirm password"
                     value={passwordConfirmation}
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                 ></input>
-                <button type="submit" id="proceed_button">Proceed</button>
-                <p id="account">Return to Login</p>
+                <button type="submit" className="proceed_button">Proceed</button>
+                <p className="note">Return to <Link to="/login">Login</Link>.</p>
             </form>          
             {errors.length > 0 && (
-                <div>
-                    <p>{errors}</p>
+                <div onClick={handleErrors} className="errors_div">
+                    <p className="errors">{errors}</p>
                 </div>
             )}
+            </div>
         </div>
     )
 }
