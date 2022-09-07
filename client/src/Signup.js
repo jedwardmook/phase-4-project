@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import user_icon from './images/user_icon.jpg'
 
-function Signup(){
+function Signup({setCurrentUser}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([])
+
+    let navigate = useNavigate()
 
     const handleErrors = () => {
         setErrors([])
@@ -31,7 +33,10 @@ function Signup(){
             }),
         }).then((response) => {
             if (response.ok) {
-                response.json().then((response) => console.log(response));
+                response.json().then((user) => {
+                    setCurrentUser(user);
+                    navigate("/profile");
+                    });
             } else {
                 response.json().then((errors) => setErrors(errors.errors));
             }
@@ -57,7 +62,7 @@ function Signup(){
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
                 <input
-                    type="text"
+                    type="password"
                     className="form_input_middle"
                     placeholder="Password"
                     value={password}

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import menu from './images/menu.jpg'
+import profile_icon from './images/user_icon_lrg.jpg'
 import user_icon from './images/user_icon.jpg'
 import logo from './images/logo.jpg'
 
@@ -11,19 +12,16 @@ function Navbar({currentUser}){
         setOpenMenu(!openMenu)
     }
 
-    const [photo] = currentUser
-    console.log(currentUser)
-
     return (
         <div>
           <div className="navbar">
-            <img className="logo" src={logo} />
+          <Link to="/"><img className="logo" src={logo} /></Link>
             <div>
-              <h3 className="heir">heirbnb</h3>
+            <Link className="link" to="/"><h3 className="heir">heirbnb</h3></Link>
             </div>
             <button className="host">Become a Host</button>
             <div>
-              <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} /><img className="user_icon" src={photo? {photo}: user_icon} /></button>
+              <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} /><img className="user_icon" src={currentUser.photo? profile_icon: user_icon} /></button>
               <div className={openMenu? "user_menu":"off"}>
                 <Link to="/login" className="link" onClick={handleMenu}><h4 className="menu_link_log">Log in</h4></Link>
                 <Link to="/signup" className="link" onClick={handleMenu}><h4 className="menu_link">Sign up</h4></Link>
