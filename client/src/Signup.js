@@ -26,16 +26,16 @@ function Signup({setCurrentUser}){
                 password: password,
                 password_confirmation: passwordConfirmation,
                 photo: {user_icon},
-                name: "",
-                bio: "",
-                location: "",
-                allegiance: "",
+                name: null,
+                bio: null,
+                location: null,
+                allegiance: null,
             }),
         }).then((response) => {
             if (response.ok) {
                 response.json().then((user) => {
                     setCurrentUser(user);
-                    navigate("/profile");
+                    navigate(`/users/${user.id}/profile`);
                     });
             } else {
                 response.json().then((errors) => setErrors(errors.errors));

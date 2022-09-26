@@ -18,8 +18,6 @@ function App() {
     })
   }, []);
 
-  console.log(currentUser)
-
   return (
     <Router>
     <div className="App">
@@ -37,7 +35,7 @@ function App() {
           setCurrentUser={setCurrentUser}
           />}
         />
-      <Route path='profile' 
+      <Route path={`/users/:userID/profile`} 
         element={<Profile 
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}/>}

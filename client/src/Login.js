@@ -31,7 +31,7 @@ function Login({setCurrentUser}){
                     navigate("/");
                 })
             } else {
-                response.json().then((errors) => setErrors(errors.errors))
+                response.json().then((errors) => setErrors(errors))
             }
         });
         setUsername('')
@@ -66,7 +66,7 @@ function Login({setCurrentUser}){
                 <button type="submit" className="proceed_button">Proceed</button>
                 {errors.length > 0 && (
                     <div onClick={handleErrors} className="errors_div">
-                        <p classname="errors">{errors}</p>
+                        <p classname="errors">{errors.errors}</p>
                     </div>
                 )}
             </form>

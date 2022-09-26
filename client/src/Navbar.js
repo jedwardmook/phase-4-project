@@ -15,13 +15,13 @@ function Navbar({currentUser}){
     return (
         <div>
           <div className="navbar">
-          <Link to="/"><img className="logo" src={logo} /></Link>
+          <Link to="/"><img className="logo" src={logo} alt="User" /></Link>
             <div>
             <Link className="link" to="/"><h3 className="heir">heirbnb</h3></Link>
             </div>
             <button className="host">Become a Host</button>
             <div>
-              <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} /><img className="user_icon" src={currentUser.photo? profile_icon: user_icon} /></button>
+              <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} alt="User"/><img className="user_icon" src={currentUser.photo? profile_icon: user_icon} alt="User"/></button>
               <div className={openMenu? "user_menu":"off"}>
                 <Link to="/login" className="link" onClick={handleMenu}><h4 className="menu_link_log">Log in</h4></Link>
                 <Link to="/signup" className="link" onClick={handleMenu}><h4 className="menu_link">Sign up</h4></Link>
