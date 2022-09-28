@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Profile from './Profile';
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import ListingsContainer from './ListingsContainer';
 
 
 function App() {
@@ -18,13 +19,19 @@ function App() {
     })
   }, []);
 
+
   return (
     <Router>
     <div className="App">
       <Navbar 
         currentUser={currentUser}
         />
+      
       <Routes>
+      <Route exact path='/'
+        element={<ListingsContainer 
+          />}
+        />
       <Route path='/login' 
         element={<Login 
           setCurrentUser={setCurrentUser}

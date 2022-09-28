@@ -1,3 +1,3 @@
-class ListingSerializer < ActiveModel::Serializer
-  attributes :id, :location, :user_id, :amenities, :rating, :photos
+class LisitingSerializer < ActiveModel::Serializer
+    attributes :id, :user_id, :photos, :name, :location, :rating
 end

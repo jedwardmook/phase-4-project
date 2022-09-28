@@ -362,3 +362,56 @@ input::placeholder {
   color: #61dafb;
 }
 
+.listings_div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.listing_card {
+  margin-top: 25px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.listing_cover_img {
+  border-radius: 25px;
+  height: 299.25px;
+  width: 315px;
+}
+
+.card_header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-top: -10px;
+}
+
+.card_name {
+  font-family: var(--main);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.card_rating {
+  font-family: var(--main);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.card_location {
+  font-family: var(--main);
+  font-weight: 500;
+  font-size: 15px;
+  color: rgb(93, 93, 93);
+  margin-left: 5px;
+  margin-top: -17px;
+}
+
+.card_price {
+  font-family: var(--main);
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-top: -10px;
+}
+
