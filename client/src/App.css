@@ -379,6 +379,11 @@ input::placeholder {
   width: 315px;
 }
 
+.card_link {
+  text-decoration: none;
+  color: black;
+}
+
 .card_header {
   display: flex;
   justify-content: space-between;
@@ -415,3 +420,123 @@ input::placeholder {
   margin-top: -10px;
 }
 
+.listing_profile {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  margin-left: 35px;
+  width: 855px;
+}
+
+.listing_profile_name {
+  font-family: var(--main);
+  font-size: 26px;
+  font-weight: 500;
+  width: 855px;
+}
+
+.listing_profile_subheaders {
+  display: flex;
+  width: 855px;
+  margin-top: -30px;
+}
+
+.subheader {
+  font-family: var(--main);
+  font-weight: 500;
+  font-size: 14px;
+  padding-right: 5px;
+}
+
+.listing_profile_photos {
+  display: flex;
+  justify-content: space-around;
+  width: 900px;
+  padding-bottom: 15px;
+}
+
+.listing_profile_photos_main {
+  padding: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 434.5px;
+}
+
+.listing_profile_photos_other {
+  width: 434.5px;
+}
+
+.profile_photo_one {
+  width: 434.5px;
+  height: 411px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.profile_photo_two {
+  object-fit: cover;
+  padding: 4px;
+  width: 209.25px;
+  height: 201.7px;
+}
+
+.profile_photo_three {
+  object-fit: cover;
+  padding: 4px;
+  width: 209.25px;
+  height: 201.7px;
+  border-top-right-radius: 25px;
+}
+
+.profile_photo_four {
+  object-fit: cover;
+  margin-top: -4px;
+  padding: 4px;
+  width: 209.25px;
+  height: 201.7px;
+}
+
+.profile_photo_five {
+  object-fit: cover;
+  margin-top: -4px;
+  padding: 4px;
+  width: 209.25px;
+  height: 201.7px;
+  border-bottom-right-radius: 25px;
+}
+
+.listing_profile_info {
+  display: flex;
+  width: 600px;
+  height: 110px;
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.listing_profile_user_image {
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+.listing_profile_amenities {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 200px;
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.profile_amenities {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listing_profile_amenity {
+  font-family: var(--main);
+  font-weight: 500;
+  font-size: 16px;
+  width: 150px;
+  margin-top: -10px;
+}

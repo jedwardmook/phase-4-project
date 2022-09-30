@@ -6,6 +6,7 @@ import Profile from './Profile';
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import ListingsContainer from './ListingsContainer';
+import Listing from './Listing';
 
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
         element={<Profile 
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}/>}
+        />
+      <Route path={`/listings/:listingID`} 
+        element={<Listing />}
         />
       </Routes>
     </div>

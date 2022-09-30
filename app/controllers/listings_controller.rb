@@ -4,14 +4,14 @@ class ListingsController < ApplicationController
         render json: Listing.all , status: :ok
     end
 
-    # def show
-    #     listing = Listing.find_by(id: params[:id])
-    #     if listing
-    #         render json: listing
-    #     else
-    #         render json: { error: "User not found" }, status: :not_found
-    #     end
-    # end
+    def show
+        listing = Listing.find_by(id: params[:id])
+        if listing
+            render json: listing, include: :user
+        else
+            render json: { error: "User not found" }, status: :not_found
+        end
+    end
 
     # def create
     #     listing = Listing.create!(listing_params)
@@ -20,9 +20,9 @@ class ListingsController < ApplicationController
     #         render json: { errors: "Listing not created" }, status: :unprocessable_entity
     # end
 
-    # private
-    # def listing_params
-    #     params.permit(:location, :rating, :user_id, :amenities, photos:[])
-    # end
+    private
+    def listing_params
+        params.permit(:location, :rating, :user_id, :amenities, photos:[])
+    end
 
 end
