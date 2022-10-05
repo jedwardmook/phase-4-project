@@ -2,6 +2,8 @@ User.destroy_all
 User.reset_pk_sequence
 Listing.destroy_all
 Listing.reset_pk_sequence
+Review.destroy_all
+Review.reset_pk_sequence
 
 puts "seeding"
 
@@ -26,4 +28,9 @@ puts "seeding"
     Listing.create(name: "The Red Keep", location: "Crownlands", user_id: 2, rating: 5, photos: ["https://awoiaf.westeros.org/images/thumb/a/a1/Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg/900px-Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg"], price: "3 Golden Dragons",
         amenities: [])
 
+    Review.create(rating: 4, body: "This place wasn't bad, but there were flies all over.", user_id: 1, listing_id: 1)
+    Review.create(rating: 3, body: "This place wasn't kind of bad, but there were more flies all over.", user_id: 1, listing_id: 1)
+    Review.create(rating: 1, body: "This place was bad. Don't go here. Too cold", user_id: 2, listing_id: 1)
+    Review.create(rating: 5, body: "Loved it here. BIG CITY!", user_id: 2, listing_id: 2)
+    
 puts "finished seeding!"

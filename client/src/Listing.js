@@ -17,7 +17,9 @@ function Listing() {
           })
         }, []);
 
-
+    const ratingsAverage = displayListing? Math.round((displayListing.reviews.map(review => review.rating).reduce((s,n) => s + n, 0) /displayListing.reviews.length)* 100)/100 : 0
+    
+    
     return (
         displayListing ? 
             <div className="listing_profile">
@@ -25,8 +27,8 @@ function Listing() {
                     <h1 className="listing_profile_name">{displayListing.name}</h1>
                 </div>
                 <div className="listing_profile_subheaders">
-                    <h4 className="subheader">★{displayListing.rating} ·</h4>
-                    <h4 className="subheader">## reviews ·</h4>
+                    <h4 className="subheader">★ {ratingsAverage} ·</h4>
+                    <h4 className="subheader">{displayListing.reviews.length} reviews ·</h4>
                     <h4 className="subheader">{displayListing.location}</h4>
                 </div>
                 <div className="listing_profile_photos">
@@ -55,9 +57,19 @@ function Listing() {
                     </div>
                 </div>
                 <div className="listing_profile_reviews">
-                <p className="listing_profile_name">Reviews</p>
-                </div>
-                
+                <p className="listing_profile_name">★{displayListing.reviews.length > 0 ? ratingsAverage: 0} ⦁ {displayListing.reviews.length} reviews</p>
+                    {displayListing.reviews.map((review) => {
+                        return <div className="listing_profile_review">
+                                    <div className="review_header">
+                                    <Link to={`/users/${displayListing.user.id}/profile`} className="card_link">
+                                    <img className="review_photo" src={review.user.photo}/>
+                                    </Link>
+                                    <p className="review_name">{review.user.name}</p>
+                                    </div>
+                                    <p>{review.body}</p>
+                                </div>
+                    })}
+                </div>  
             </div> : <h1>Listing Loading</h1>
         )
     

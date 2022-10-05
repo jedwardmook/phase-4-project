@@ -135,7 +135,7 @@ hr {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
@@ -539,4 +539,71 @@ input::placeholder {
   font-size: 16px;
   width: 150px;
   margin-top: -10px;
+}
+
+.listing_profile_reviews {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.listing_profile_review {
+  font-family: var(--main);
+  font-weight: 500;
+  width: 290px;
+  margin-top: -150px;
+}
+
+.review_header {
+  display: flex;
+}
+
+.review_name {
+  font-family: var(--main);
+  font-weight: 600;
+  margin-left: 15px;
+  margin-top: 5px
+}
+
+.review_photo {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+}
+
+.profile_reviews {
+  margin-bottom: 50px;
+}
+
+.profile_review_header {
+  display: flex;
+}
+
+.profile_review_photo {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+}
+
+.profile_review_listing {
+  font-family: var(--main);
+  font-weight: 600;
+  font-size: 17px;
+  margin-top: 10px;
+  padding-left: 25px;
+}
+
+.profile_review_location {
+  padding-top: 20px;
+  margin-left: -85px;
+}
+
+.host_form_div {
+  position: relative;
+  background: white;
+  width: 700px;
+  height: 700px;
+  border-radius: 15px;
 }

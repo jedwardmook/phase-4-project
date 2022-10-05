@@ -7,7 +7,8 @@ class ListingsController < ApplicationController
     def show
         listing = Listing.find_by(id: params[:id])
         if listing
-            render json: listing, include: :user
+            render json: listing
+            # , include: [:user, :reviews]
         else
             render json: { error: "User not found" }, status: :not_found
         end
@@ -22,7 +23,7 @@ class ListingsController < ApplicationController
 
     private
     def listing_params
-        params.permit(:location, :rating, :user_id, :amenities, photos:[])
+        params.permit(:location, :rating, :user_id, :amenities, photos: [], review_ids: [])
     end
 
 end

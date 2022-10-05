@@ -7,6 +7,7 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
+import HostForm from './HostForm';
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         element={<Signup 
           setCurrentUser={setCurrentUser}
           />}
+        />
+      <Route path='/host' 
+          element={<HostForm />}
         />
       <Route path={`/users/:userID/profile`} 
         element={<Profile 

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import user_icon_lrg from './images/user_icon_lrg.jpg'
 
 function Profile({setCurrentUser,currentUser}){
-    const [profileUser, setProfileUser] = useState({})
+    const [profileUser, setProfileUser] = useState()
     const [editProfile, setEditProfile] = useState(false)
     const [updateImage, setUpdateImage] = useState(false)
     const [errors, setErrors] = useState(null)
@@ -95,6 +95,7 @@ function Profile({setCurrentUser,currentUser}){
     }
 
     return (
+        profileUser ?
         <div className="profile">
             <div className="info_div">
                 <p className="hello">Hi, I'm {profileUser.name? profileUser.name : "a new user"}</p>
@@ -143,7 +144,17 @@ function Profile({setCurrentUser,currentUser}){
                     <button onClick={handlePatch} className={editProfile? "save_changes" : "off"}>Save</button>
                 </div>
                 <br/>
-                <p className="attribute">Reviews</p>
+                <p className="attribute">★ {profileUser.reviews.length > 0? profileUser.reviews.length: 0} reviews by me</p>
+                    {profileUser.reviews.map((review) => {
+                        return  <div className="profile_reviews">
+                                    <div className="profile_review_header">
+                                        <img className="profile_review_photo" src={review.listing.photos[0]} />
+                                        <p className="profile_review_listing">{review.listing.name}</p>
+                                        <p className="profile_review_location">{review.listing.location}</p>
+                                    </div>
+                                    <p>{review.body}</p>
+                                </div>
+                    })}
                 <div className={currentUser.id === displayUser? "show": "off"}>
                     <button onClick={handleLogOut}>Sign out</button>
                 </div>
@@ -161,9 +172,7 @@ function Profile({setCurrentUser,currentUser}){
                     onChange={handleChangePhoto}
                 />
             </div>
-            
-
-        </div>
+        </div> : <h1>Profile loading</h1>
     )
 }
 
