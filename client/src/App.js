@@ -9,7 +9,6 @@ import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
 import HostForm from './HostForm';
 
-
 function App() {
   const [currentUser, setCurrentUser] = useState([])
   
@@ -28,7 +27,6 @@ function App() {
       <Navbar 
         currentUser={currentUser}
         />
-      
       <Routes>
       <Route exact path='/'
         element={<ListingsContainer 
@@ -45,7 +43,9 @@ function App() {
           />}
         />
       <Route path='/host' 
-          element={<HostForm />}
+        element={<HostForm 
+          currentUser={currentUser}
+          />}
         />
       <Route path={`/users/:userID/profile`} 
         element={<Profile 

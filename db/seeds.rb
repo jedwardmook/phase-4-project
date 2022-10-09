@@ -17,7 +17,6 @@ puts "seeding"
         name: "Winterfell", 
         location: "The North", 
         user_id: 1, 
-        rating: 0, 
         photos: ["https://awoiaf.westeros.org/images/f/ff/Lino_Drieghe_Winterfell.JPG", 
             "https://awoiaf.westeros.org/images/c/cb/Mariusz_Gandzell_Gates_of_Winterfell.png", 
             "https://awoiaf.westeros.org/images/c/cb/Winterfell_throne_by_MarcSimonetti.jpg", 
@@ -25,7 +24,7 @@ puts "seeding"
             "https://awoiaf.westeros.org/images/a/ac/Ted_Nasmith_A_Song_of_Ice_and_Fire_Winterfell.jpg"], 
         price: "200 Silver Stags",
         amenities: ["Scullery", "Chamber Pot","Scullery", "Chamber Pot","Scullery", "Chamber Pot"])
-    Listing.create(name: "The Red Keep", location: "Crownlands", user_id: 2, rating: 5, photos: ["https://awoiaf.westeros.org/images/thumb/a/a1/Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg/900px-Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg"], price: "3 Golden Dragons",
+    Listing.create(name: "The Red Keep", location: "Crownlands", user_id: 2, photos: ["https://awoiaf.westeros.org/images/thumb/a/a1/Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg/900px-Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg"], price: "3 Golden Dragons",
         amenities: [])
 
     Review.create(rating: 4, body: "This place wasn't bad, but there were flies all over.", user_id: 1, listing_id: 1)

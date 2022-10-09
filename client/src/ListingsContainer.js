@@ -15,9 +15,9 @@ function ListingsContainer() {
       }, []);
     
     
-    const listingsToShow = listings.map(listing => {
+    const listingsToShow = listings.map((listing, index) => {
       return (
-        <Link to={`/listings/${listing.id}`} className="card_link">
+        <Link key={index} to={`/listings/${listing.id}`} className="card_link">
           <div className="listing_card">
               <img className="listing_cover_img" src={listing.photos[0]} />
               <div className="card_header">
