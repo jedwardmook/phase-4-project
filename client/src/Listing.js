@@ -27,7 +27,7 @@ function Listing() {
                     <h1 className="listing_profile_name">{displayListing.name}</h1>
                 </div>
                 <div className="listing_profile_subheaders">
-                    <h4 className="subheader">★ {ratingsAverage} ·</h4>
+                    <h4 className="subheader">★ {displayListing.reviews.length > 0 ? ratingsAverage : 5} ·</h4>
                     <h4 className="subheader">{displayListing.reviews.length} reviews ·</h4>
                     <h4 className="subheader">{displayListing.location}</h4>
                 </div>
@@ -56,8 +56,9 @@ function Listing() {
                         })}
                     </div>
                 </div>
+                <p className="listing_profile_name">★{displayListing.reviews.length > 0 ? ratingsAverage: 5} ⦁ {displayListing.reviews.length} reviews</p>
+                <Link to={`/listings/${displayListing.id}/add_review`} className="link"><p className="add_review">Add review</p></Link>
                 <div className="listing_profile_reviews">
-                <p className="listing_profile_name">★{displayListing.reviews.length > 0 ? ratingsAverage: 0} ⦁ {displayListing.reviews.length} reviews</p>
                     {displayListing.reviews.map((review) => {
                         return <div className="listing_profile_review">
                                     <div className="review_header">

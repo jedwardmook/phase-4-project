@@ -22,9 +22,9 @@ puts "seeding"
             "https://awoiaf.westeros.org/images/c/cb/Winterfell_throne_by_MarcSimonetti.jpg", 
             "https://awoiaf.westeros.org/images/d/d3/Winterfell_by_feliche.jpg", 
             "https://awoiaf.westeros.org/images/a/ac/Ted_Nasmith_A_Song_of_Ice_and_Fire_Winterfell.jpg"], 
-        price: "200 Silver Stags",
+        price: 200,
         amenities: ["Scullery", "Chamber Pot","Scullery", "Chamber Pot","Scullery", "Chamber Pot"])
-    Listing.create(name: "The Red Keep", location: "Crownlands", user_id: 2, photos: ["https://awoiaf.westeros.org/images/thumb/a/a1/Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg/900px-Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg"], price: "3 Golden Dragons",
+    Listing.create(name: "The Red Keep", location: "Crownlands", user_id: 2, photos: ["https://awoiaf.westeros.org/images/thumb/a/a1/Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg/900px-Red_Keep_at_Kings_Landing%2C_Ted_Nasmith.jpg"], price: 600,
         amenities: [])
 
     Review.create(rating: 4, body: "This place wasn't bad, but there were flies all over.", user_id: 1, listing_id: 1)

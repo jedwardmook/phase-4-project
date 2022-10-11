@@ -19,15 +19,15 @@ function ListingsContainer() {
       return (
         <Link key={index} to={`/listings/${listing.id}`} className="card_link">
           <div className="listing_card">
-              <img className="listing_cover_img" src={listing.photos[0]} />
+            <img className="listing_cover_img" src={listing.photos[0]} />
               <div className="card_header">
                 <h4 className="card_name">{listing.name}</h4>
-                <h4 className="card_rating">★{Math.round((listing.reviews.map(review => review.rating).reduce((s,n) => s + n, 0) /listing.reviews.length)* 100)/100}</h4>
+                <h4 className="card_rating">★{listing.reviews.length > 0 ? Math.round((listing.reviews.map(review => review.rating).reduce((s,n) => s + n, 0) /listing.reviews.length)* 100)/100 : 5}</h4>
               </div>
             <h4 className="card_location">{listing.location}</h4>
-            <h4 className="card_price"><strong>{listing.price}</strong> night</h4>
+            <h4 className="card_price"><strong>{listing.price} Silver Stags</strong> night</h4>
           </div>
-          </Link>
+        </Link>
           )
     })
 

@@ -71,7 +71,7 @@ function HostForm({currentUser}){
         setAbout("")
         setAmenities([])
         setPrice()
-        setPhotos([...photos])
+        setPhotos([])
     }
 
     return (

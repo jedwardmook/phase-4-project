@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
 import HostForm from './HostForm';
+import ReviewForm from './ReviewForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -54,6 +55,10 @@ function App() {
         />
       <Route path={`/listings/:listingID`} 
         element={<Listing />}
+        />
+      <Route path={`/listings/:listingID/add_review`}
+        element={<ReviewForm 
+          currentUser={currentUser}/>}
         />
       </Routes>
     </div>
