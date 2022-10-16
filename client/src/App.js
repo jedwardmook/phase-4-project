@@ -9,6 +9,7 @@ import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
 import HostForm from './HostForm';
 import ReviewForm from './ReviewForm';
+import EditListing from './EditListing';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -30,23 +31,19 @@ function App() {
         />
       <Routes>
       <Route exact path='/'
-        element={<ListingsContainer 
-          />}
+        element={<ListingsContainer />}
         />
       <Route path='/login' 
         element={<Login 
-          setCurrentUser={setCurrentUser}
-          />}
+          setCurrentUser={setCurrentUser}/>}
         />
       <Route path='/signup' 
         element={<Signup 
-          setCurrentUser={setCurrentUser}
-          />}
+          setCurrentUser={setCurrentUser}/>}
         />
       <Route path='/host' 
         element={<HostForm 
-          currentUser={currentUser}
-          />}
+          currentUser={currentUser}/>}
         />
       <Route path={`/users/:userID/profile`} 
         element={<Profile 
@@ -54,10 +51,16 @@ function App() {
           currentUser={currentUser}/>}
         />
       <Route path={`/listings/:listingID`} 
-        element={<Listing />}
+        element={<Listing 
+          currentUser={currentUser}
+          />}
         />
       <Route path={`/listings/:listingID/add_review`}
         element={<ReviewForm 
+          currentUser={currentUser}/>}
+        />
+      <Route path={`/listings/:listingID/edit_listing`}
+        element={<EditListing
           currentUser={currentUser}/>}
         />
       </Routes>

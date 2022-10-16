@@ -20,6 +20,16 @@ class ListingsController < ApplicationController
             render json: { errors: "Listing not created" }, status: :unprocessable_entity
     end
 
+    def update
+        listing = Listing.find_by(id: params[:id])
+        if listing
+            listing.update(listing_params)
+            render json: listing, status: :accepted
+        else
+            render json: { error: "Listing not found"}, status: :not_found
+        end
+    end
+
     private
     def listing_params
         params.permit(:name, :location, :about, :price, :user_id, :id, photos: [], amenities: [])

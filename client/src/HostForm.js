@@ -105,7 +105,6 @@ function HostForm({currentUser}){
                     <option>The Reach</option>
                     <option>Stormlands</option>
                     <option>Dorne</option>
-                    onChange
                 </select>
                 <h3 className="form_image_header">About</h3>
                 <textarea
@@ -127,10 +126,10 @@ function HostForm({currentUser}){
                     {photos.map ((photo,index) => {
                         return <img key={index} className="host_form_image" src={photo} />
                     })}
-                    <div>
-                        <button className={photos.length > 0? "exit_image": "off"} onClick={handleRemoveClick}>X</button>
-                   </div>
-                </div>
+                        <div>
+                            <button className={photos.length > 0? "exit_image": "off"} onClick={handleRemoveClick}>X</button>
+                        </div>
+                    </div>
                 <br />
                 <h3 className="form_image_header">Attributes</h3>
                 <div className="form_checkbox_div">

@@ -1,5 +1,6 @@
 class ListingSerializer < ActiveModel::Serializer
-    attributes :id, :photos, :name, :location, :user_id, :amenities, :price, :about
+    attributes :id, :name, :location, :user_id, :price, :about, :photos, :amenities
+    
     has_many :reviews
     belongs_to :user
 

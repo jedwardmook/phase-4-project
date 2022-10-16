@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 
-function Listing() {
+
+function Listing({currentUser}) {
     const [displayListing, setDisplayListing] = useState()
-    
+    const [editListing, setEditListing] = useState(false)
+
     let listingId = useParams()
     let displayId = parseInt(listingId.listingID)
 
@@ -18,8 +20,11 @@ function Listing() {
         }, []);
 
     const ratingsAverage = displayListing? Math.round((displayListing.reviews.map(review => review.rating).reduce((s,n) => s + n, 0) /displayListing.reviews.length)* 100)/100 : 0
-    
-    
+
+    const handleEdit = () => {
+        setEditListing(!editListing)
+    }
+
     return (
         displayListing ? 
             <div className="listing_profile">
@@ -29,17 +34,18 @@ function Listing() {
                 <div className="listing_profile_subheaders">
                     <h4 className="subheader">★ {displayListing.reviews.length > 0 ? ratingsAverage : 5} ·</h4>
                     <h4 className="subheader">{displayListing.reviews.length} reviews ·</h4>
-                    <h4 className="subheader">{displayListing.location}</h4>
+                    <h4 className="subheader">{displayListing.listingLocation}</h4>
                 </div>
+                    <Link to={`/listings/${displayListing.id}/edit_listing`} state={displayListing} className="link"><p onClick={handleEdit} className={displayListing.user.id === currentUser.id? "edit_profile" : "off"}>Edit Listing</p></Link>
                 <div className="listing_profile_photos">
                     <div className="listing_profile_photos_main">
-                        <img className="profile_photo_one" src={displayListing.photos[0]}/>
+                        <img alt="listing" className="profile_photo_one" src={displayListing.photos[0]}/>
                     </div>
                     <div className="listing_profile_photos_other">
-                        <img className="profile_photo_two" src={displayListing.photos[1]}/>
-                        <img className="profile_photo_three" src={displayListing.photos[2]}/>
-                        <img className="profile_photo_four" src={displayListing.photos[3]}/>
-                        <img className="profile_photo_five" src={displayListing.photos[4]}/>
+                        <img alt="listing" className="profile_photo_two" src={displayListing.photos[1]}/>
+                        <img alt="listing" className="profile_photo_three" src={displayListing.photos[2]}/>
+                        <img alt="listing" className="profile_photo_four" src={displayListing.photos[3]}/>
+                        <img alt="listing" className="profile_photo_five" src={displayListing.photos[4]}/>
                     </div>
                 </div>
                 <div className="listing_profile_info">
@@ -47,6 +53,10 @@ function Listing() {
                     <Link to={`/users/${displayListing.user.id}/profile`} className="card_link">
                     <img className="listing_profile_user_image" src={displayListing.user.photo} />
                     </Link>
+                </div>
+                <div className="listing_profile_about">
+                    <p className="listing_profile_name">About</p>
+                    <p className="profile_about">{displayListing.about}</p>
                 </div>
                 <div className="listing_profile_amenities">
                     <p className="listing_profile_name">Amenities</p>
