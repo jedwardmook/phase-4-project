@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
     def index 
-        render json: Listing.all , status: :ok
+        render json: Listing.all.order(name: :asc) , status: :ok
     end
 
     def show
@@ -32,7 +32,7 @@ class ListingsController < ApplicationController
 
     private
     def listing_params
-        params.permit(:name, :location, :about, :price, :user_id, :id, photos: [], amenities: [])
+        params.permit(:name, :location, :about, :price, :host_id, :id, photos: [], amenities: [])
     end
 
 end

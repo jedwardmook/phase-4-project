@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 function ReviewForm({currentUser}){
     const [reviewListing, setReviewListing] = useState()
@@ -9,6 +9,7 @@ function ReviewForm({currentUser}){
     const [user_id, setUser_id] = useState()
     const [errors, setErrors] = useState([])
     
+    let navigate = useNavigate()
     let listingId = useParams()
     let reviewListingId = parseInt(listingId.listingID)
 
@@ -45,13 +46,14 @@ function ReviewForm({currentUser}){
             })
         }).then((response) => {
             if (response.ok) {
-                response.json().then((data) => {
-                console.log(data)})
+                console.log(response);
             } else {
-                response.json().then((errors) => setErrors(errors))
+                console.log(response)
+                setErrors(response)
             }
-        });
+            });
         setBody("")
+        navigate(`/listings/${reviewListingId}`) 
     }
 
 return (
@@ -73,6 +75,7 @@ return (
                         value={rating}
                         onChange={handleRating}
                     >
+                        <option>{null}</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>

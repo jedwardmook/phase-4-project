@@ -22,32 +22,6 @@ function Profile({setCurrentUser,currentUser}){
           })
         }, [Profile]);
 
-    function handlePatch() {
-        fetch(`/users/${displayUser}`, { 
-            method: "PATCH",  
-            headers: {    
-                "Content-type": "application/json"  
-            },  
-            body: JSON.stringify({    
-                name: name,
-                allegiance: allegiance,
-                bio: bio,
-                location: location,
-                photo: photo,
-            })
-        }) 
-            .then((response) => {
-            if (response.ok) {
-                response.json().then((user) => {
-                    setProfileUser(user);
-                    });
-            } else {
-                response.json().then((errors) => console.log(errors));
-            }
-        });
-        setEditProfile(!editProfile)
-    }
-
     const handleEditForm = () => {
         setEditProfile(!editProfile)
     }

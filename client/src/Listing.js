@@ -36,7 +36,7 @@ function Listing({currentUser}) {
                     <h4 className="subheader">{displayListing.reviews.length} reviews ·</h4>
                     <h4 className="subheader">{displayListing.listingLocation}</h4>
                 </div>
-                    <Link to={`/listings/${displayListing.id}/edit_listing`} state={displayListing} className="link"><p onClick={handleEdit} className={displayListing.user.id === currentUser.id? "edit_profile" : "off"}>Edit Listing</p></Link>
+                    <Link to={`/listings/${displayListing.id}/edit_listing`} state={displayListing} className="link"><p onClick={handleEdit} className={displayListing.host.id === currentUser.id? "edit_profile" : "off"}>Edit Listing</p></Link>
                 <div className="listing_profile_photos">
                     <div className="listing_profile_photos_main">
                         <img alt="listing" className="profile_photo_one" src={displayListing.photos[0]}/>
@@ -49,10 +49,8 @@ function Listing({currentUser}) {
                     </div>
                 </div>
                 <div className="listing_profile_info">
-                    <p className="listing_profile_name">Rooms hosted by {displayListing.user.name}</p>
-                    <Link to={`/users/${displayListing.user.id}/profile`} className="card_link">
-                    <img className="listing_profile_user_image" src={displayListing.user.photo} />
-                    </Link>
+                    <p className="listing_profile_name">Rooms hosted by {displayListing.host.name}</p>
+                    <img className="listing_profile_user_image" src={displayListing.host.image} />
                 </div>
                 <div className="listing_profile_about">
                     <p className="listing_profile_name">About</p>
@@ -72,7 +70,7 @@ function Listing({currentUser}) {
                     {displayListing.reviews.map((review) => {
                         return <div className="listing_profile_review">
                                     <div className="review_header">
-                                    <Link to={`/users/${displayListing.user.id}/profile`} className="card_link">
+                                    <Link to={`/users/${review.user_id}/profile`} className="card_link">
                                     <img className="review_photo" src={review.user.photo}/>
                                     </Link>
                                     <p className="review_name">{review.user.name}</p>

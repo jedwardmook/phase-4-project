@@ -243,6 +243,14 @@ hr {
   border-bottom-right-radius: 10px;
 }
 
+.class_radio {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: var(--main);
+  font-weight: 500;
+}
+
 input::placeholder {
   font-size: 16px;
   font-family: var(--main);
