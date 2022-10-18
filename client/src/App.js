@@ -10,6 +10,7 @@ import Listing from './Listing';
 import HostForm from './HostForm';
 import ReviewForm from './ReviewForm';
 import EditListing from './EditListing';
+import EditProfile from './EditProfile';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -61,6 +62,11 @@ function App() {
         />
       <Route path={`/listings/:listingID/edit_listing`}
         element={<EditListing
+          currentUser={currentUser}/>}
+        />
+      <Route path={`/users/:userID/edit_profile`}
+        element={<EditProfile
+          setCurrentUser= {setCurrentUser}
           currentUser={currentUser}/>}
         />
       </Routes>

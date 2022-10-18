@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import user_icon_lrg from './images/user_icon_lrg.jpg'
 
 
 function Profile({setCurrentUser,currentUser}){
     const [profileUser, setProfileUser] = useState()
     const [editProfile, setEditProfile] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [name, setName] = useState(currentUser.name)
-    const [allegiance, setAllegiance] = useState(currentUser.allegiance)
-    const [bio, setBio] = useState(currentUser.bio)
-    const [location, setLocation] = useState(currentUser.location)
-    const [photo, setPhoto] = useState(currentUser.photo)
+
 
     let navigate = useNavigate()
     let userID = useParams()
@@ -25,7 +20,7 @@ function Profile({setCurrentUser,currentUser}){
 
             }
           })
-        }, [displayUser]);
+        }, [Profile]);
 
     function handlePatch() {
         fetch(`/users/${displayUser}`, { 
@@ -73,50 +68,19 @@ function Profile({setCurrentUser,currentUser}){
         <div className="profile">
             <div className="info_div">
                 <p className="hello">Hi, I'm {profileUser.name? profileUser.name : "a new user"}</p>
-                    <input
-                        type="text"
-                        placeholder="Change allegiance"
-                        value={name}
-                        className={editProfile? "edit_location_input": "off"}
-                        onChange={(e) => setName(e.target.value)}
-                    />
                 <p className="attribute">{profileUser.allegiance? profileUser.allegiance : "Allegiance"}</p>
-                <input
-                    type="text"
-                    placeholder="Change allegiance"
-                    value={allegiance}
-                    className={editProfile? "edit_location_input": "off"}
-                    onChange={(e) => setAllegiance(e.target.value)}
-                />
                 <div className={currentUser.id === displayUser? "show": "off"}>
-                    <p onClick={handleEditForm} className="edit_profile">Edit profile</p>
+                    <Link to={`/users/${currentUser.id}/edit_profile`} state={profileUser} className="link"><p onClick={handleEditForm} className="edit_profile">Edit profile</p></Link>
                 </div>
                 <br/>
                 <hr />
                 <p className="attribute">About</p>
                 <p>{profileUser.bio}</p>
-                <textarea
-                    type="textarea"
-                    value={bio}
-                    className={editProfile? "edit_bio_input": "off"}
-                    onChange={(e) => setBio(e.target.value)}
-                />
                 <hr/>
                 <p className="attribute">Location</p>
                 <p>{profileUser.location}</p>
-                <input
-                    type="textarea"
-                    placeholder=""
-                    value={location}
-                    className={editProfile? "edit_location_input": "off"}
-                    onChange={(e) => setLocation(e.target.value)}
-                />
                 <hr/>
                 <br/>
-                <div className={editProfile? "changes_div" : "off"}>
-                    <p onClick={handleEditForm} className={editProfile? "edit_profile" : "off"}>Cancel</p>
-                    <button onClick={handlePatch} className={editProfile? "save_changes" : "off"}>Save</button>
-                </div>
                 <br/>
                 <p className="attribute">★ {profileUser.reviews.length > 0? profileUser.reviews.length: 0} reviews by me</p>
                     {profileUser.reviews.map((review) => {
@@ -135,13 +99,6 @@ function Profile({setCurrentUser,currentUser}){
             </div>
             <div className="photo_div">
                 <img className="profile_image" src={profileUser.photo? profileUser.photo : user_icon_lrg} alt="Profile"></img>
-                <input
-                    type="text"
-                    placeholder="Add image link"
-                    value={photo}
-                    className={editProfile? "update_image_input" : "off"}
-                    onChange={(e) => setPhoto(e.target.value)}
-                />
             </div>
         </div> : <h1>Profile loading</h1>
     )
