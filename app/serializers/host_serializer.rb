@@ -1,6 +1,6 @@
 class HostSerializer < ActiveModel::Serializer
-  attributes :id, :name, :listing_id, :image
+  attributes :id, :name, :image, :listings
 
   has_many :listings
-  has_many :reviews, through: :listings
+  has_many :users, through: :reviews
 end

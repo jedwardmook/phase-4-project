@@ -78,11 +78,9 @@ function Signup({setCurrentUser}){
                 <button type="submit" className="proceed_button">Proceed</button>
                 <p className="note">Return to <Link to="/login">Login</Link>.</p>
             </form>          
-            {errors.length > 0 && (
-                <div onClick={handleErrors} className="errors_div">
-                    <p className="errors">{errors}</p>
-                </div>
-            )}
+            <div className={errors? "review_errors_div" : "off"}>
+                    <p className="errors_div">{errors}</p>
+            </div>
             </div>
         </div>
     )

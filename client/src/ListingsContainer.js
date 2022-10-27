@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 
-function ListingsContainer() {
+function ListingsContainer({closeMenu}) {
     const [listings, setListings] = useState([])
 
     useEffect(() =>{
@@ -22,7 +22,7 @@ function ListingsContainer() {
             <img className="listing_cover_img" src={listing.photos[0]} />
               <div className="card_header">
                 <h4 className="card_name">{listing.name}</h4>
-                <h4 className="card_rating">★{listing.reviews.length > 0 ? Math.round((listing.reviews.map(review => review.rating).reduce((s,n) => s + n, 0) /listing.reviews.length)* 100)/100 : 5}</h4>
+                <h4 className="card_rating">★{listing.ratings_average}</h4>
               </div>
             <h4 className="card_location">{listing.location}</h4>
             <h4 className="card_price"><strong>{listing.price} Silver Stags</strong> night</h4>
@@ -32,7 +32,7 @@ function ListingsContainer() {
     })
 
     return (
-        <div className="listings_div">
+        <div onClick={closeMenu} className="listings_div">
             {listingsToShow}
         </div>
     )

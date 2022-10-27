@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
         if listing
             render json: listing
         else
-            render json: { error: "User not found" }, status: :not_found
+            render json: { error: "Listing not found" }, status: :not_found
         end
     end
 

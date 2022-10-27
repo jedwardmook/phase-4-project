@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useParams, Link } from "react-router-dom";
 
 
+
 function Listing({currentUser}) {
     const [displayListing, setDisplayListing] = useState()
     const [editListing, setEditListing] = useState(false)
@@ -32,11 +33,10 @@ function Listing({currentUser}) {
                     <h1 className="listing_profile_name">{displayListing.name}</h1>
                 </div>
                 <div className="listing_profile_subheaders">
-                    <h4 className="subheader">★ {displayListing.reviews.length > 0 ? ratingsAverage : 5} ·</h4>
-                    <h4 className="subheader">{displayListing.reviews.length} reviews ·</h4>
+                    <h4 className="subheader">★ {displayListing.ratings_average} ·</h4>
+                    <h4 className="subheader">{displayListing.reviews.length} reviews</h4>
                     <h4 className="subheader">{displayListing.listingLocation}</h4>
                 </div>
-                    <Link to={`/listings/${displayListing.id}/edit_listing`} state={displayListing} className="link"><p onClick={handleEdit} className={displayListing.host.id === currentUser.id? "edit_profile" : "off"}>Edit Listing</p></Link>
                 <div className="listing_profile_photos">
                     <div className="listing_profile_photos_main">
                         <img alt="listing" className="profile_photo_one" src={displayListing.photos[0]}/>
@@ -59,18 +59,21 @@ function Listing({currentUser}) {
                 <div className="listing_profile_amenities">
                     <p className="listing_profile_name">Amenities</p>
                     <div className="profile_amenities">
-                        {displayListing.amenities.map((amenity) => {
-                            return <h4 className="listing_profile_amenity">⦁ {amenity}</h4>
-                        })}
+                        {displayListing.amenities.map((amenity, index) => {
+                            return <h4 key={index} className="listing_profile_amenity">⦁ {amenity}</h4>
+                            }
+                        )}
                     </div>
                 </div>
-                <p className="listing_profile_name">★{displayListing.reviews.length > 0 ? ratingsAverage: 5} ⦁ {displayListing.reviews.length} reviews</p>
-                <Link to={`/listings/${displayListing.id}/add_review`} className="link"><p className="add_review">Add review</p></Link>
+                <p className="listing_profile_name">★{displayListing.ratings_average} ⦁ {displayListing.reviews.length} reviews</p>
+                <div className="review_button_div">
+                    {currentUser.id? <Link to={`/listings/${displayListing.id}/add_review`} className="link"><p className="add_review">Add review</p></Link> : <div></div>}
+                </div>
                 <div className="listing_profile_reviews">
                     {displayListing.reviews.map((review) => {
                         return <div className="listing_profile_review">
                                     <div className="review_header">
-                                    <Link to={`/users/${review.user_id}/profile`} className="card_link">
+                                    <Link to={`/users/${review.user.id}/profile`} className="card_link">
                                     <img className="review_photo" src={review.user.photo}/>
                                     </Link>
                                     <p className="review_name">{review.user.name}</p>

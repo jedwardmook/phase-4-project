@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import user_icon_lrg from './images/user_icon_lrg.jpg'
 
 
-function Profile({setCurrentUser,currentUser}){
+
+function Profile({setCurrentUser, currentUser}){
     const [profileUser, setProfileUser] = useState()
     const [editProfile, setEditProfile] = useState(false)
 
-
-    let navigate = useNavigate()
     let userID = useParams()
     const displayUser = parseInt(userID.userID)
 
@@ -20,21 +19,11 @@ function Profile({setCurrentUser,currentUser}){
 
             }
           })
-        }, [Profile]);
+        }, []);
+
 
     const handleEditForm = () => {
         setEditProfile(!editProfile)
-    }
-    
-    function handleLogOut(){
-        fetch("/sessions/1", {
-        method: "DELETE"
-            }).then((response) =>{
-                if (response.ok) {
-                    setCurrentUser([]);
-                    navigate('/');
-                }   
-            });
     }
 
     return (
@@ -56,8 +45,8 @@ function Profile({setCurrentUser,currentUser}){
                 <hr/>
                 <br/>
                 <br/>
-                <p className="attribute">★ {profileUser.reviews.length > 0? profileUser.reviews.length: 0} reviews by me</p>
-                    {profileUser.reviews.map((review) => {
+                <p className="attribute">★ {profileUser.hosts.length > 0? profileUser.hosts.length: 0} reviews by me</p>
+                    {/* {profileUser.reviews.map((review) => {
                         return  <div className="profile_reviews">
                                     <div className="profile_review_header">
                                         <img className="profile_review_photo" src={review.listing.photos[0]} />
@@ -66,10 +55,15 @@ function Profile({setCurrentUser,currentUser}){
                                     </div>
                                     <p>{review.body}</p>
                                 </div>
-                    })}
-                <div className={currentUser.id === displayUser? "show": "off"}>
-                    <button onClick={handleLogOut}>Sign out</button>
-                </div>
+                    })} */}
+                {profileUser.hosts.map ((host, index) => {
+                    return <div key={index}>{host.listings.map ((listing, index) => {
+                                return <Link to={`/listings/${listing.id}`} className="link"><div className="profile_reviews" key={index}>
+                                            <img className="profile_review_photo" src={listing.photos[0]} alt="listing" /> 
+                                            <h4 className="profile_host_name">{listing.name}</h4>        
+                                        </div></Link>})}
+                                        <p className="profile_review_location">Lord: {host.name}</p>
+                            </div> })}
             </div>
             <div className="photo_div">
                 <img className="profile_image" src={profileUser.photo? profileUser.photo : user_icon_lrg} alt="Profile"></img>

@@ -4,7 +4,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Profile from './Profile';
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
 import HostForm from './HostForm';
@@ -14,6 +14,17 @@ import EditProfile from './EditProfile';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
+  const [openMenu, setOpenMenu] = useState(false)
+
+  const handleMenu = () => {
+    setOpenMenu(!openMenu)
+  }
+
+  const closeMenu = () => {
+    if(openMenu){
+    setOpenMenu(!openMenu)
+    } 
+  }
   
   useEffect(() => {
     fetch("/sessions/1").then((response) => {
@@ -23,16 +34,32 @@ function App() {
     })
   }, []);
 
+  function handleLogOut(){
+    fetch("/sessions/1", {
+    method: "DELETE"
+        }).then((response) =>{
+            if (response.ok) {
+                setCurrentUser([]);
+            }   
+        });
+}
+
 
   return (
     <Router>
     <div className="App">
       <Navbar 
         currentUser={currentUser}
+        handleLogOut={handleLogOut}
+        openMenu={openMenu}
+        handleMenu={handleMenu}
+        closeMenu={closeMenu}
         />
       <Routes>
       <Route exact path='/'
-        element={<ListingsContainer />}
+        element={<ListingsContainer
+          openMenu={openMenu} 
+          closeMenu={closeMenu}/>}
         />
       <Route path='/login' 
         element={<Login 
@@ -66,6 +93,7 @@ function App() {
         />
       <Route path={`/users/:userID/edit_profile`}
         element={<EditProfile
+          handleLogOut={handleLogOut}
           setCurrentUser= {setCurrentUser}
           currentUser={currentUser}/>}
         />

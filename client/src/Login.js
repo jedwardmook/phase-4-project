@@ -31,7 +31,7 @@ function Login({setCurrentUser}){
                     navigate("/");
                 })
             } else {
-                response.json().then((errors) => setErrors(errors))
+                response.json().then((errors) => setErrors(errors.errors))
             }
         });
         setUsername('')
@@ -64,11 +64,9 @@ function Login({setCurrentUser}){
                 ></input>
                 <p className="note">Don't have an account. Sign up <Link to="/signup">here</Link>.</p> 
                 <button type="submit" className="proceed_button">Proceed</button>
-                {errors.length > 0 && (
-                    <div onClick={handleErrors} className="errors_div">
-                        <p classname="errors">{errors.errors}</p>
-                    </div>
-                )}
+                <div className={errors? "review_errors_div" : "off"}>
+                    <p className="errors_div">{errors}</p>
+                </div>
             </form>
             </div>
         </div>

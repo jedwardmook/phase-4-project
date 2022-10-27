@@ -123,6 +123,7 @@
 
 .link {
   text-decoration: none;
+  height: 20px;
 }
 
 .link:visited{
@@ -131,12 +132,6 @@
 
 hr {
   border: .5px solid rgb(211, 211, 211)
-}
-
-.listing_container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 1030;
 }
 
 .login_window {
@@ -157,7 +152,7 @@ hr {
   position: relative;
   background: white;
   width: 528px;
-  height: 440px;
+  height: 380px;
   border-radius: 15px;
 }
 
@@ -165,7 +160,7 @@ hr {
   position: relative;
   background: white;
   width: 528px;
-  height: 480px;
+  height: 420px;
   border-radius: 15px;
 }
 
@@ -277,18 +272,6 @@ input::placeholder {
   color: white;
 }
 
-.errors_div {
-  display: block;
-  margin-top: 20px;
-  margin-left: 90px;
-  width: 350px;
-  font-family: var(--main);
-  border-radius: 5px;
-  text-align: center;
-  color: red;
-  cursor: pointer;
-}
-
 .errors_div:hover {
   background-color: rgb(245, 245, 245);
 }
@@ -363,19 +346,23 @@ input::placeholder {
 .listings_div {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
   justify-content: space-around;
 }
 
 .listing_card {
-  margin-top: 25px;
-  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 250px;
+  height: 300px;
   cursor: pointer;
 }
 
 .listing_cover_img {
   border-radius: 25px;
-  height: 299.25px;
-  width: 315px;
+  height: 250px;
+  width: 250px;
 }
 
 .card_link {
@@ -387,7 +374,7 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   margin-left: 5px;
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .card_name {
@@ -577,6 +564,7 @@ input::placeholder {
 .listing_profile_reviews {
   display: flex;
   flex-wrap: wrap;
+  width: 580px;
 }
 
 .listing_profile_review {
@@ -605,7 +593,9 @@ input::placeholder {
 }
 
 .profile_reviews {
-  margin-bottom: 50px;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .profile_review_header {
@@ -618,6 +608,11 @@ input::placeholder {
   border-radius: 30px;
 }
 
+.profile_host_name {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
 .profile_review_listing {
   font-family: var(--main);
   font-weight: 600;
@@ -627,8 +622,9 @@ input::placeholder {
 }
 
 .profile_review_location {
-  padding-top: 20px;
-  margin-left: -85px;
+  margin-left: 80px;
+  margin-top: -50px;
+  padding-bottom: 30px;
 }
 
 .host_form_div {
@@ -789,13 +785,26 @@ input::placeholder {
   cursor: pointer;
 }
 
+.hosts_div {
+  display: block;
+  flex-direction: row;
+}
+
 .space_div {
   margin-bottom: 10px;
   height: 250px;
 }
 
+.review_button_div {
+  display: flex;
+  flex-direction: column;
+  height: 10px;
+  width: 300px;
+}
+
 .add_review {
   font-family: var(--main);
+  color: #FF6666;
   font-weight: 500;
   margin-top: -20px;
   cursor: pointer;
@@ -896,6 +905,26 @@ input::placeholder {
   font-size: 16px;
   color: white;
   cursor: pointer;
+}
+
+.review_errors_div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  font-family: var(--main);
+  font-weight: 600;
+  color: #FF6666;
+  font-size: 14px;
+  width: 488px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.error_p {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .edit_listing_form_div {

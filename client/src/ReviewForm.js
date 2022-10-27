@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 function ReviewForm({currentUser}){
     const [reviewListing, setReviewListing] = useState()
-    const [rating, setRating] = useState(1)
+    const [rating, setRating] = useState()
     const [body, setBody] = useState("")
     const [listing_id, setListing_id] = useState()
     const [user_id, setUser_id] = useState()
@@ -46,14 +46,13 @@ function ReviewForm({currentUser}){
             })
         }).then((response) => {
             if (response.ok) {
-                console.log(response);
+                navigate(`/listings/${reviewListingId}`) 
             } else {
-                console.log(response)
-                setErrors(response)
+                response.json().then((errors) => setErrors(errors.errors));
             }
             });
         setBody("")
-        navigate(`/listings/${reviewListingId}`) 
+        
     }
 
 return (
@@ -91,6 +90,11 @@ return (
                 </form>
                 </div>
                 <h5 className="review_form_footer">Review by {currentUser.name}</h5>
+                <div className={errors? "review_errors_div" : "off"}>
+                    {errors.map ((error, index) => {
+                        return <p key={index} className="error_p">{error}</p>
+                    })}
+                </div>
             </div>: <h3>Review Loading</h3>}
         </div>
     </div>

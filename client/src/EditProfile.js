@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {  Link, useNavigate, useLocation } from "react-router-dom";
 
-function EditProfile({setCurrentUser, currentUser}){
+function EditProfile({handleLogOut, setCurrentUser, currentUser}){
     const location = useLocation();
     const state = location.state;
     const [editName, setEditName] = useState(state.name)
@@ -38,6 +38,17 @@ function EditProfile({setCurrentUser, currentUser}){
             }
         });
         navigate(`/users/${currentUser.id}/profile`)
+    }
+
+    function handleDeleteUser(){
+        fetch(`/users/${currentUser.id}`, {
+        method: "DELETE"
+            }).then((response) =>{
+                if (response.ok) {
+                    handleLogOut()
+                }      
+            });
+            navigate("/")
     }
 
     return (
@@ -104,7 +115,7 @@ function EditProfile({setCurrentUser, currentUser}){
                     />
                 </div>
                 <button onClick={handlePatch} className="save_changes">Save</button>
-                <p onClick={null} className="delete_profile">Delete user</p>
+                <p onClick={handleDeleteUser} className="delete_profile">Delete user</p>
             </div>
         </div>
     )
