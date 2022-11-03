@@ -29,7 +29,7 @@ function Navbar({currentUser, handleLogOut, openMenu, handleMenu, closeMenu}){
             <div>
             <Link className="link" to="/"><h3 className="heir">heirbnb</h3></Link>
             </div>
-            <Link to="/host" className="host_link" onClick={handleMenu}><button className="host">Become a Lord</button></Link>
+            <Link to="/host" className="host_link" ><button className="host">Become a Lord</button></Link>
             <div>
               <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} alt="User"/><img className="user_icon" src={currentUser.photo? profile_icon: user_icon} alt="User"/></button>
               <div className={openMenu? "user_menu":"off"}>

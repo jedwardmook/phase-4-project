@@ -7,10 +7,10 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import ListingsContainer from './ListingsContainer';
 import Listing from './Listing';
-import HostForm from './HostForm';
+import Host from './Host';
 import ReviewForm from './ReviewForm';
-import EditListing from './EditListing';
 import EditProfile from './EditProfile';
+import NotFound from './NotFound';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -70,8 +70,7 @@ function App() {
           setCurrentUser={setCurrentUser}/>}
         />
       <Route path='/host' 
-        element={<HostForm 
-          currentUser={currentUser}/>}
+        element={<Host />}
         />
       <Route path={`/users/:userID/profile`} 
         element={<Profile 
@@ -87,16 +86,14 @@ function App() {
         element={<ReviewForm 
           currentUser={currentUser}/>}
         />
-      <Route path={`/listings/:listingID/edit_listing`}
-        element={<EditListing
-          currentUser={currentUser}/>}
-        />
       <Route path={`/users/:userID/edit_profile`}
         element={<EditProfile
           handleLogOut={handleLogOut}
           setCurrentUser= {setCurrentUser}
           currentUser={currentUser}/>}
         />
+      <Route path='*' 
+        element={<NotFound />} />
       </Routes>
     </div>
     </Router>

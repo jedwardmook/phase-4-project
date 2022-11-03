@@ -4,7 +4,7 @@ import user_icon_lrg from './images/user_icon_lrg.jpg'
 
 
 
-function Profile({setCurrentUser, currentUser}){
+function Profile({currentUser}){
     const [profileUser, setProfileUser] = useState()
     const [editProfile, setEditProfile] = useState(false)
 
@@ -16,7 +16,7 @@ function Profile({setCurrentUser, currentUser}){
             if (response.ok) {
               response.json().then((user) => setProfileUser(user));
             } else {
-
+              console.log(response.json())
             }
           })
         }, []);
@@ -25,6 +25,8 @@ function Profile({setCurrentUser, currentUser}){
     const handleEditForm = () => {
         setEditProfile(!editProfile)
     }
+
+    console.log(profileUser)
 
     return (
         profileUser ?
@@ -63,6 +65,15 @@ function Profile({setCurrentUser, currentUser}){
                                             <h4 className="profile_host_name">{listing.name}</h4>        
                                         </div></Link>})}
                                         <p className="profile_review_location">Lord: {host.name}</p>
+                                        {host.listing_reviews.map ((listing_review, index) => {
+                                            if (listing_review.user_id === profileUser.id)
+                                                return (
+                                                <div>
+                                                    <p key={index} className="profile_review_review">"{listing_review.body}"</p>
+                                                    {listing_review.user_id === displayUser? <p>Hello</p>: console.log("no")}
+                                                </div>
+                                                )
+                                            })}
                             </div> })}
             </div>
             <div className="photo_div">

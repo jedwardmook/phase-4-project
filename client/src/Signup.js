@@ -10,10 +10,6 @@ function Signup({setCurrentUser}){
 
     let navigate = useNavigate()
 
-    const handleErrors = () => {
-        setErrors([])
-    }
-
     function handleSubmit(e){
         e.preventDefault();
         fetch("/users", {
