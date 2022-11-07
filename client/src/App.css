@@ -304,6 +304,7 @@ input::placeholder {
   text-decoration: underline;
   cursor: pointer;
   margin-left: auto;
+  color: black;
 }
 
 .attribute {
@@ -1158,4 +1159,23 @@ input::placeholder {
   font-size: 16px;
   color: white;
   cursor: pointer;
+}
+
+.review_div_update{
+  position: relative;
+  background: white;
+  width: 528px;
+  height: 360px;
+  border-radius: 15px;
+}
+
+.review_delete_edit {
+font-family: var(--main);
+font-weight: 500;
+font-size: 15px;
+text-decoration: underline;
+cursor: pointer;
+margin-top: 5px;
+margin-left: 20px;
+color: black;
 }

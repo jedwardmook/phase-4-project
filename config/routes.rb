@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :hosts
-  resources :reviews, only: [:index, :create, :show]
-  resources :listings, only: [:index, :show, :create, :update]
+  resources :hosts, only: [:create, :show]
+  resources :reviews, only: [:create, :show, :update, :destroy]
+  resources :listings, only: [:index, :show, :create]
   resources :users, only: [:create, :show, :update, :destroy]
   resources :sessions, only: [:create, :show, :destroy]
 

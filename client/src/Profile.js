@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link} from "react-router-dom";
 import user_icon_lrg from './images/user_icon_lrg.jpg'
 
 
@@ -21,12 +21,9 @@ function Profile({currentUser}){
           })
         }, []);
 
-
     const handleEditForm = () => {
         setEditProfile(!editProfile)
     }
-
-    console.log(profileUser)
 
     return (
         profileUser ?
@@ -48,16 +45,6 @@ function Profile({currentUser}){
                 <br/>
                 <br/>
                 <p className="attribute">★ {profileUser.hosts.length > 0? profileUser.hosts.length: 0} reviews by me</p>
-                    {/* {profileUser.reviews.map((review) => {
-                        return  <div className="profile_reviews">
-                                    <div className="profile_review_header">
-                                        <img className="profile_review_photo" src={review.listing.photos[0]} />
-                                        <p className="profile_review_listing">{review.listing.name}</p>
-                                        <p className="profile_review_location">{review.listing.location}</p>
-                                    </div>
-                                    <p>{review.body}</p>
-                                </div>
-                    })} */}
                 {profileUser.hosts.map ((host, index) => {
                     return <div key={index}>{host.listings.map ((listing, index) => {
                                 return <Link to={`/listings/${listing.id}`} className="link"><div className="profile_reviews" key={index}>
@@ -70,7 +57,9 @@ function Profile({currentUser}){
                                                 return (
                                                 <div>
                                                     <p key={index} className="profile_review_review">"{listing_review.body}"</p>
-                                                    {listing_review.user_id === displayUser? <p>Hello</p>: console.log("no")}
+                                                    <div className={listing_review.user_id === currentUser.id? "show" : "off" }>
+                                                        <Link to={`edit_review/${listing_review.id}`} state={listing_review} className="link"><p className="edit_profile">Edit Review</p></Link>
+                                                    </div>
                                                 </div>
                                                 )
                                             })}

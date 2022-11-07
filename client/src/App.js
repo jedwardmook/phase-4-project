@@ -11,6 +11,7 @@ import Host from './Host';
 import ReviewForm from './ReviewForm';
 import EditProfile from './EditProfile';
 import NotFound from './NotFound';
+import ReviewEdit from './ReviewEdit';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -90,6 +91,10 @@ function App() {
         element={<EditProfile
           handleLogOut={handleLogOut}
           setCurrentUser= {setCurrentUser}
+          currentUser={currentUser}/>}
+        />
+      <Route path={`/users/:userID/profile/edit_review/:reviewID`}
+        element={<ReviewEdit
           currentUser={currentUser}/>}
         />
       <Route path='*' 
