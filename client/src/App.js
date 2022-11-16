@@ -16,6 +16,7 @@ import ReviewEdit from './ReviewEdit';
 function App() {
   const [currentUser, setCurrentUser] = useState([])
   const [openMenu, setOpenMenu] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const handleMenu = () => {
     setOpenMenu(!openMenu)
@@ -41,6 +42,7 @@ function App() {
         }).then((response) =>{
             if (response.ok) {
                 setCurrentUser([]);
+                setIsLoggedIn(false)
             }   
         });
 }
@@ -55,6 +57,7 @@ function App() {
         openMenu={openMenu}
         handleMenu={handleMenu}
         closeMenu={closeMenu}
+        isLoggedIn={isLoggedIn}
         />
       <Routes>
       <Route exact path='/'
@@ -64,7 +67,8 @@ function App() {
         />
       <Route path='/login' 
         element={<Login 
-          setCurrentUser={setCurrentUser}/>}
+          setCurrentUser={setCurrentUser}
+          setIsLoggedIn={setIsLoggedIn}/>}
         />
       <Route path='/signup' 
         element={<Signup 

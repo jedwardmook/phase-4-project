@@ -19,7 +19,7 @@ function Profile({currentUser}){
               console.log(response.json())
             }
           })
-        }, []);
+        }, [displayUser]);
 
     const handleEditForm = () => {
         setEditProfile(!editProfile)
@@ -55,8 +55,8 @@ function Profile({currentUser}){
                                         {host.listing_reviews.map ((listing_review, index) => {
                                             if (listing_review.user_id === profileUser.id)
                                                 return (
-                                                <div>
-                                                    <p key={index} className="profile_review_review">"{listing_review.body}"</p>
+                                                <div key={index}>
+                                                    <p  className="profile_review_review">"{listing_review.body}"</p>
                                                     <div className={listing_review.user_id === currentUser.id? "show" : "off" }>
                                                         <Link to={`edit_review/${listing_review.id}`} state={listing_review} className="link"><p className="edit_profile">Edit Review</p></Link>
                                                     </div>

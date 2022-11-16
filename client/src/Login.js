@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login({setCurrentUser}){
+function Login({setCurrentUser, setIsLoggedIn}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([])
 
     let navigate = useNavigate()
-
-    const handleErrors = () => {
-        setErrors([])
-    }
-    
+     
     function handleSubmit(e) {
         e.preventDefault()
         setErrors([])
@@ -29,6 +25,7 @@ function Login({setCurrentUser}){
                 response.json().then((user) => {
                     setCurrentUser(user);
                     navigate("/");
+                    setIsLoggedIn(true);
                 })
             } else {
                 response.json().then((errors) => setErrors(errors.errors))

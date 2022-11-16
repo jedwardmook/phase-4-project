@@ -66,7 +66,7 @@ function ReviewEdit({currentUser}){
 return (
     <div className="login_window">
         <div className="review_div_update">
-        <Link to="/"><button className="exit">X</button></Link>
+        <Link to={`/users/${user_id}/profile`}><button className="exit">X</button></Link>
             <h4 className="form_header">Edit your review</h4>
             <hr/>
             {listing?
