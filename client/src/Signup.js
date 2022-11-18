@@ -1,8 +1,9 @@
+import { Data } from "@react-google-maps/api";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import user_icon from './images/user_icon.jpg'
 
-function Signup({setCurrentUser}){
+function Signup({setCurrentUser, setIsLoggedIn}){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -31,6 +32,7 @@ function Signup({setCurrentUser}){
             if (response.ok) {
                 response.json().then((user) => {
                     setCurrentUser(user);
+                    setIsLoggedIn(true);
                     navigate(`/users/${user.id}/profile`);
                     });
             } else {
@@ -75,7 +77,9 @@ function Signup({setCurrentUser}){
                 <p className="note">Return to <Link to="/login">Login</Link>.</p>
             </form>          
             <div className={errors? "review_errors_div" : "off"}>
-                    <p className="errors_div">{errors}</p>
+            {errors.map ((error, index) => {
+                        return <p key={index} className="error_p">{error}</p>
+                    })}
             </div>
             </div>
         </div>

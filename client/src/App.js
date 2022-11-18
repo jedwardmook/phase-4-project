@@ -72,7 +72,8 @@ function App() {
         />
       <Route path='/signup' 
         element={<Signup 
-          setCurrentUser={setCurrentUser}/>}
+          setCurrentUser={setCurrentUser}
+          setIsLoggedIn={setIsLoggedIn}/>}
         />
       <Route path='/host' 
         element={<Host />}
