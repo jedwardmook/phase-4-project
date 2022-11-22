@@ -64,7 +64,8 @@ puts "seeding"
         photos: ["https://s.hdnux.com/photos/74/64/60/15944753/132/1200x0.jpg",
             "https://awoiaf.westeros.org/images/thumb/8/8d/Ted_Nasmith_A_Song_of_Ice_and_Fire_Riverrun.jpg/700px-Ted_Nasmith_A_Song_of_Ice_and_Fire_Riverrun.jpg",
             "https://awoiaf.westeros.org/images/4/4a/Riverrun_by_Feliche.jpg",
-            "https://www.tednasmith.com/wp-content/uploads/2015/07/TN-Passing_the_Wheel_Tower.jpg"], 
+            "https://www.tednasmith.com/wp-content/uploads/2015/07/TN-Passing_the_Wheel_Tower.jpg",
+            "https://awoiaf.westeros.org/images/c/ce/Riverrun_castle.jpg"], 
         price: 350,
         amenities: ["Godswood", "Sept", "Stables", "Kennels", "Ports" ])
 
@@ -102,7 +103,7 @@ puts "seeding"
         photos: ["https://awoiaf.westeros.org/images/0/0e/Ted_Nasmith_A_Song_of_Ice_and_Fire_Casterly_Rock.jpeg",
             "https://awoiaf.westeros.org/images/thumb/7/72/Casterly_rock_by_feliche.jpg/800px-Casterly_rock_by_feliche.jpg",
             "https://cdnb.artstation.com/p/assets/images/images/014/592/825/large/eva-kedves-casterly-rock-as.jpg?1544622428",
-            "https://static.wikia.nocookie.net/iron-throne-roleplay5113/images/4/4f/Casterly.jpg/revision/latest?cb=20170723123442",
+            "https://awoiaf.westeros.org/images/2/2a/Daniele_Bigliardo_The_Wealth_of_the_Rock.JPG",
             "https://i.redd.it/60dst6ew2qi21.png"], 
         price: 800,
         amenities: ["Godswood", "Sept", "Port", "Stables", "Gardens", "Golden Gallery"])

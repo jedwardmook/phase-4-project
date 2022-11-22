@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resources :hosts, only: [:create, :show]
   resources :reviews, only: [:create, :show, :update, :destroy]
   resources :listings, only: [:index, :show, :create]
