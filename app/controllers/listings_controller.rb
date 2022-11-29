@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+    # skip_before_action :authorize, only: [:index, :show]
 
     def index 
         render json: Listing.all.order(name: :asc) , status: :ok

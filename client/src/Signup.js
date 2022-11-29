@@ -1,4 +1,3 @@
-import { Data } from "@react-google-maps/api";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import user_icon from './images/user_icon.jpg'
@@ -33,7 +32,7 @@ function Signup({setCurrentUser, setIsLoggedIn}){
                 response.json().then((user) => {
                     setCurrentUser(user);
                     setIsLoggedIn(true);
-                    navigate(`/users/${user.id}/profile`);
+                    navigate("/my_profile");
                     });
             } else {
                 response.json().then((errors) => setErrors(errors.errors));

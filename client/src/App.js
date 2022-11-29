@@ -12,6 +12,7 @@ import ReviewForm from './ReviewForm';
 import EditProfile from './EditProfile';
 import NotFound from './NotFound';
 import ReviewEdit from './ReviewEdit';
+import LoggedInUser from './LoggedInUser';
 
 function App() {
   const [currentUser, setCurrentUser] = useState([])
@@ -29,7 +30,7 @@ function App() {
   }
   
   useEffect(() => {
-    fetch("/sessions/1").then((response) => {
+    fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => setCurrentUser(user));
       }
@@ -83,6 +84,10 @@ function App() {
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}/>}
         />
+      <Route path='my_profile'
+        element={<LoggedInUser
+          currentUser={currentUser}/>}
+        />
       <Route path={`/listings/:listingID`} 
         element={<Listing 
           currentUser={currentUser}
@@ -92,7 +97,7 @@ function App() {
         element={<ReviewForm 
           currentUser={currentUser}/>}
         />
-      <Route path={`/users/:userID/edit_profile`}
+      <Route path={`/my_profile/edit_profile`}
         element={<EditProfile
           handleLogOut={handleLogOut}
           setCurrentUser= {setCurrentUser}

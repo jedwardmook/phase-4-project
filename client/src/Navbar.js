@@ -24,7 +24,7 @@ function Navbar({currentUser, handleLogOut, openMenu, handleMenu, closeMenu, isL
               <button onClick={handleMenu} className="user_button"><img className="menu_image" src={menu} alt="User"/><img className="user_icon" src={currentUser.photo? profile_icon: user_icon} alt="User"/></button>
               <div className={openMenu? "user_menu":"off"}>
                 {isLoggedIn? <div>
-                <Link to={`/users/${currentUser.id}/profile`} className="link" onClick={handleMenu}><h4 className="menu_link_log">Profile</h4></Link>
+                <Link to="my_profile" className="link" onClick={handleMenu}><h4 className="menu_link_log">Profile</h4></Link>
                 <Link to="/" className="link" onClick={handleMenuLogOut}><h4 className="menu_link">Log Out</h4></Link>
                 <hr/>
                 <Link to="/host" className="link" onClick={handleMenu}><h4 className="menu_link">Host</h4></Link>
@@ -41,5 +41,7 @@ function Navbar({currentUser, handleLogOut, openMenu, handleMenu, closeMenu, isL
        </div>
     )
 }
+
+// data for link to original profile `/users/${currentUser.id}/profile`
 
 export default Navbar;

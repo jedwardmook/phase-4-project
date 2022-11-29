@@ -37,7 +37,7 @@ function EditProfile({handleLogOut, setCurrentUser, currentUser}){
                 response.json().then((errors) => console.log(errors));
             }
         });
-        navigate(`/users/${currentUser.id}/profile`)
+        navigate("/my_profile")
     }
 
     function handleDeleteUser(){
@@ -54,7 +54,7 @@ function EditProfile({handleLogOut, setCurrentUser, currentUser}){
     return (
         <div className="login_window">
             <div className="edit_profile_div">
-            <Link to={`/users/${currentUser.id}/profile`}><button className="exit">X</button></Link>
+            <Link to="/my_profile"><button className="exit">X</button></Link>
                 <h4 className="form_header">Edit Profile</h4>
                 <hr/>
                 <div className="profile_review_header">

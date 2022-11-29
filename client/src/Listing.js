@@ -73,9 +73,9 @@ function Listing({currentUser}) {
                     {displayListing.reviews.map((review) => {
                         return <div className="listing_profile_review">
                                     <div className="review_header">
-                                    <Link to={`/users/${review.user.id}/profile`} className="card_link">
+                                    {/* <Link to={`/users/${review.user.id}/profile`} className="card_link"> */}
                                     <img className="review_photo" src={review.user.photo}/>
-                                    </Link>
+                                    {/* </Link> */}
                                     <p className="review_name">{review.user.name}</p>
                                     </div>
                                     <p>{review.body}</p>
